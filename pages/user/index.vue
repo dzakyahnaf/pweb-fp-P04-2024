@@ -1,15 +1,24 @@
 <template>
     <div
-      class="min-h-screen flex flex-col"
-      :style="{
-        backgroundImage: `url(${backgroundImage})`,
+      class="relative h-screen w-screen flex flex-col bg-cover bg-center"
+      :style="{ 
+        backgroundImage: `url(${backgroundImage})`, 
         backgroundSize: 'cover',
         backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat'
+        backgroundRepeat: 'no-repeat',
       }"
     >
+      <!-- Overlay -->
+      <div
+        class="absolute inset-0"
+        :style="{
+          backgroundColor: '#D3A78C',
+          opacity: '0.4',
+        }"
+      ></div>
+  
       <!-- Navbar -->
-      <nav class="py-4 px-8 flex justify-between items-center shadow-md" :style="{ backgroundColor: '#D3A78C' }">
+      <nav class="relative z-10 py-4 px-8 flex justify-between items-center shadow-md" :style="{ backgroundColor: '#D3A78C' }">
         <div class="text-2xl font-bold text-white">kostFP04</div>
         <div class="flex space-x-8 items-center relative">
           <NuxtLink to="/user/sewa" class="text-white hover:underline">Rent</NuxtLink>
@@ -28,9 +37,9 @@
       </nav>
   
       <!-- Welcome Section -->
-      <div class="flex-grow flex flex-col justify-center items-center text-white px-6">
+      <div class="relative z-10 flex-grow flex flex-col justify-center items-center text-white px-6">
         <h1 class="text-5xl font-bold mb-4">Welcome, (user)</h1>
-        <div class="bg-white bg-opacity-50 rounded-lg shadow-lg p-6 w-full max-w-4xl">
+        <div class="bg-white bg-opacity-80 rounded-lg shadow-lg p-6 w-full max-w-4xl">
           <h2 class="text-2xl font-bold mb-6 text-gray-800">Invoice History</h2>
           <table class="table-auto w-full text-left text-gray-800 border-collapse">
             <thead>
@@ -64,7 +73,7 @@
   export default {
     data() {
       return {
-        backgroundImage: '/images/bed-bg.jpg', // Path gambar
+        backgroundImage: '/images/bgbed2.jpg', // Path gambar
         invoices: [
           { date: "2024-01-01", bill: 6000000, status: "Lunas" },
           { date: "2024-04-01", bill: 12000000, status: "Belum Lunas" },
@@ -84,6 +93,11 @@
   </script>
   
   <style scoped>
+  body {
+    margin: 0;
+    padding: 0;
+  }
+  
   nav {
     background-color: #D3A78C;
   }
