@@ -1,60 +1,84 @@
 <template>
   <div
-    class="min-h-screen bg-cover bg-center bg-no-repeat flex flex-col items-center py-12"
+    class="min-h-screen bg-cover bg-center bg-no-repeat flex flex-col"
     :style="{ backgroundImage: `url(${backgroundUrl})` }"
   >
-    <!-- Title -->
-    <h1 class="text-3xl font-bold mb-6 text-white bg-opacity-80 px-6 py-2 rounded">
-      Fasilitas Kost
-    </h1>
+    <!-- Navbar -->
+    <nav
+      class="bg-gray-800 shadow-md py-4 px-4 sm:px-8 flex justify-between items-center sticky top-0 z-10"
+    >
+      <div class="text-2xl font-bold text-white">sinKOSTan</div>
+      <div class="space-x-4 flex flex-wrap items-center">
+        <NuxtLink
+          to="/"
+          class="text-white hover:text-blue-600"
+          :class="currentRoute === '/' ? 'text-blue-400' : ''"
+        >
+          Login
+        </NuxtLink>
+        <NuxtLink
+          to="/rules"
+          class="text-white hover:text-blue-600"
+          :class="currentRoute === '/rules' ? 'text-blue-400' : ''"
+        >
+          Peraturan Kost
+        </NuxtLink>
+      </div>
+    </nav>
 
     <!-- Carousel Container -->
-    <div class="relative w-full max-w-4xl overflow-hidden rounded-lg shadow-lg bg-white bg-opacity-90">
+    <div class="relative w-full max-w-3xl overflow-hidden rounded-lg shadow-lg bg-white bg-opacity-90 mt-6 mx-auto flex-grow">
       <!-- Slides -->
       <div
         class="flex transition-transform duration-500"
         :style="{ transform: `translateX(-${currentIndex * 100}%)` }"
       >
         <!-- Slide 1: Spesifikasi Kamar -->
-        <div class="w-full flex-shrink-0 p-6 text-gray-700">
+        <div class="w-full flex-shrink-0 text-gray-700 flex flex-col">
           <div
-            class="h-60 bg-cover bg-center rounded-md"
+            class="h-96 bg-cover bg-center rounded-t-md"
             :style="{ backgroundImage: `url(${slideImages[0]})` }"
           ></div>
-          <h2 class="text-2xl font-semibold mt-4 mb-2">Spesifikasi Kamar</h2>
-          <ul class="list-disc pl-5">
-            <li>Luas kamar: 4x5</li>
-            <li>Kasur tidur ukuran queen</li>
-            <li>Kamar mandi dalam</li>
-            <li>Kursi dan meja belajar</li>
-          </ul>
+          <div class="p-4 flex-grow">
+            <h2 class="text-2xl font-semibold mt-2 mb-2">Spesifikasi Kamar</h2>
+            <ul class="list-disc pl-5">
+              <li>Luas kamar: 4x5</li>
+              <li>Kasur tidur ukuran queen</li>
+              <li>Kamar mandi dalam</li>
+              <li>Kursi dan meja belajar</li>
+            </ul>
+          </div>
         </div>
 
         <!-- Slide 2: Pilihan Sewa -->
-        <div class="w-full flex-shrink-0 p-6 text-gray-700">
+        <div class="w-full flex-shrink-0 text-gray-700 flex flex-col">
           <div
-            class="h-60 bg-cover bg-center rounded-md"
+            class="h-96 bg-cover bg-center rounded-t-md"
             :style="{ backgroundImage: `url(${slideImages[1]})` }"
           ></div>
-          <h2 class="text-2xl font-semibold mt-4 mb-2">Pilihan Sewa</h2>
-          <ul class="list-disc pl-5">
-            <li>3 Bulan</li>
-            <li>6 Bulan</li>
-          </ul>
+          <div class="p-4 flex-grow">
+            <h2 class="text-2xl font-semibold mt-2 mb-2">Pilihan Sewa</h2>
+            <ul class="list-disc pl-5">
+              <li>3 Bulan</li>
+              <li>6 Bulan</li>
+            </ul>
+          </div>
         </div>
 
         <!-- Slide 3: Fasilitas Tambahan Berbayar -->
-        <div class="w-full flex-shrink-0 p-6 text-gray-700">
+        <div class="w-full flex-shrink-0 text-gray-700 flex flex-col">
           <div
-            class="h-60 bg-cover bg-center rounded-md"
+            class="h-96 bg-cover bg-center rounded-t-md"
             :style="{ backgroundImage: `url(${slideImages[2]})` }"
           ></div>
-          <h2 class="text-2xl font-semibold mt-4 mb-2">Fasilitas Tambahan Berbayar</h2>
-          <ul class="list-disc pl-5">
-            <li>Laundry</li>
-            <li>Cleaning Service</li>
-            <li>Catering</li>
-          </ul>
+          <div class="p-4 flex-grow">
+            <h2 class="text-2xl font-semibold mt-2 mb-2">Fasilitas Tambahan Berbayar</h2>
+            <ul class="list-disc pl-5">
+              <li>Laundry</li>
+              <li>Cleaning Service</li>
+              <li>Catering</li>
+            </ul>
+          </div>
         </div>
       </div>
 
@@ -83,6 +107,13 @@
         :class="currentIndex === index ? 'bg-blue-500' : 'bg-gray-300'"
       ></span>
     </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-6">
+      <div class="container mx-auto px-4 text-center">
+        <p class="text-sm">&copy; 2024 sinKOSTan. P04. All rights reserved.</p>
+      </div>
+    </footer>
   </div>
 </template>
 
@@ -100,6 +131,11 @@ export default {
       ],
     };
   },
+  computed: {
+    currentRoute() {
+      return this.$route.path;
+    },
+  },
   methods: {
     nextSlide() {
       this.currentIndex = (this.currentIndex + 1) % this.slideImages.length;
@@ -114,5 +150,3 @@ export default {
   },
 };
 </script>
-
-
