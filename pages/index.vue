@@ -67,7 +67,7 @@
     <!-- Footer -->
     <footer class="bg-gray-800 text-white py-6">
       <div class="container mx-auto px-4 text-center">
-        <p class="text-sm">&copy; 2024 sinKOSTan. P04.</p>
+        <p class="text-sm">&copy; 2024 sinKOSTan. P04. All rights reserved.</p>
       </div>
     </footer>
   </div>
